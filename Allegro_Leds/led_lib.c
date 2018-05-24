@@ -53,7 +53,7 @@ void draw (LEDS * ref, WINDOW * window){
     al_draw_text(window->genFont, color, 100, 165, ALLEGRO_ALIGN_LEFT, "ingrese b para iniciar parpadeo" );
     al_draw_text(window->genFont, color, 100, 180, ALLEGRO_ALIGN_LEFT, "ingrese c para parar todos los sonidos" );
     al_draw_text(window->genFont, color, 100, 195, ALLEGRO_ALIGN_LEFT, "ingrese s para reproducir todos los sonidos" );
-     al_draw_text(window->genFont, color, 100, 210, ALLEGRO_ALIGN_LEFT, "ingrese q para salir." );
+    al_draw_text(window->genFont, color, 100, 210, ALLEGRO_ALIGN_LEFT, "ingrese q para salir." );
     
     
     
@@ -101,7 +101,7 @@ void key_pressed (int unichar, LEDS * ref)
             
         case 'q':case 'Q':
             
-            //endProgram();
+            exit(0);
             break;
             
         case 'b':case 'B':
@@ -140,7 +140,7 @@ void allOn (LEDS * ref) {
     BIT * pBit;
     for( pBit= &(ref->bit7); pBit>= &(ref->bit0); pBit--)                                           //Itera cada led
     {
-        //al_play_sample(pBit->sample, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_LOOP, &(pBit->id_sample));     //Reproduce el sonido asociado al led
+        al_play_sample(pBit->sample, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_LOOP, &(pBit->id_sample));     //Reproduce el sonido asociado al led
         pBit -> on = true;
     }
     
@@ -152,7 +152,7 @@ void allOff (LEDS * ref) {
     BIT * pBit;
     for( pBit= &(ref->bit7); pBit>= &(ref->bit0); pBit--)    //Itera cada led
     {
-        //al_stop_sample(&(pBit->id_sample));               //Stop sonido del led
+        al_stop_sample(&(pBit->id_sample));               //Stop sonido del led
         pBit -> on = false;
         
     }    
@@ -164,7 +164,7 @@ void toggleBit (BIT * pBit, LEDS * ref)
 {
     if( pBit->on )                                                //Si el led esta encendido
         {
-            //al_stop_sample(&(pBit->id_sample));
+            al_stop_sample(&(pBit->id_sample));
 
             if(ref->toggleFlag)                                  //Si el programa se encuentra en estado de parpadeo
             {
@@ -180,7 +180,8 @@ void toggleBit (BIT * pBit, LEDS * ref)
             
         } else                                                  //Si esta apagado
         {
-            //al_play_sample(pBit->sample, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_LOOP, &(pBit->id_sample));
+        
+            al_play_sample(pBit->sample, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_LOOP, &(pBit->id_sample));
         
             if(ref->toggleFlag)                                //Si el programa se encuentra en estado de parpadeo 
             {
@@ -217,7 +218,7 @@ void onBlink (LEDS * ref) {
             if (ref->toggleFlag == true)                            //Si hay estado de parpadeo y el led esta encendido
             {
                 pBit-> on= false;                                   //Se apaga el led
-               // al_stop_sample(&(pBit->id_sample));               //Stop a todo el sonido
+                al_stop_sample(&(pBit->id_sample));               //Stop a todo el sonido
                 pBit-> toggle = true;
             } else 
             {
@@ -227,7 +228,7 @@ void onBlink (LEDS * ref) {
         {
             if(pBit->toggle)                                        //Si el led tiene estado de parpadeo y el led apagado.
             {
-                //al_play_sample(pBit->sample, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_LOOP, &(pBit->id_sample));
+                al_play_sample(pBit->sample, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_LOOP, &(pBit->id_sample));
                 pBit->on=true;                                      //Se enciende el led
                 if (ref->toggleFlag == false)                       //Si no hay estado de parpadeo en el programa
                 {
