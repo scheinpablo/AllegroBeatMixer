@@ -67,7 +67,7 @@ void key_pressed (int unichar, LEDS * ref)
     char key = (char) unichar;
     BIT * pBit = & (ref -> bit0);
     char bit;
-    if((key >= 48) && (key <= 57))      //Si se apreto un numero
+    if((key >= 48) && (key <= 55))      //Si se apreto un numero
     {
         bit = (key - 48);               //Pasa el ascii a su valor real
         pBit += bit;
