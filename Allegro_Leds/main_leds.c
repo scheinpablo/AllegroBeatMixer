@@ -30,14 +30,14 @@ int main(int argc, char** argv) {
     mainWindow.timer = NULL;
     mainWindow.titleFont = NULL;
     
-    mainWindow.samples[0]="base1.ogg";  //DEFINO LOS SONIDOS QUE REPRODUCIRA CADA LED
-    mainWindow.samples[1]="base2.ogg";
-    mainWindow.samples[2]="base3.ogg";
-    mainWindow.samples[3]="base4.ogg";
-    mainWindow.samples[4]="base5.ogg";
-    mainWindow.samples[5]="base6.ogg";
-    mainWindow.samples[6]="base7.ogg";
-    mainWindow.samples[7]="base8.ogg";
+    mainWindow.samples[0]="base 1.ogg";  //DEFINO LOS SONIDOS QUE REPRODUCIRA CADA LED
+    mainWindow.samples[1]="base 2.ogg";
+    mainWindow.samples[2]="base 3.ogg";
+    mainWindow.samples[3]="base 4.ogg";
+    mainWindow.samples[4]="base 5.ogg";
+    mainWindow.samples[5]="base 6.ogg";
+    mainWindow.samples[6]="base 7.ogg";
+    mainWindow.samples[7]="base 8.ogg";
     
     bool do_exit = false; 
     bool redraw = false; 
